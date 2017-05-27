@@ -2,21 +2,21 @@
 
 * [X] ~~*Connect to redis server*~~
 * [X] ~~*Connect to mongo server*~~
-* [ ] Serve login page
+* [X] ~~*Serve login page*~~
 * [X] ~~*Set up mongoose user*~~
 * [X] ~~*Auth user against Mongo*~~
-* [ ] Passport
+* [X] ~~*Passport*~~
   * [X] ~~*Local strategy*~~
   * [X] ~~*Session (default, in memory)*~~
   * [X] ~~*Serializing user?*~~
-  * [ ] Store serialized user in redis
-* [ ] Set session in redis
+  * [X] ~~*Store serialized user in redis*~~
+* [X] ~~*Set session in redis*~~
 
-* [ ] Externalize stuff
-  * [ ] redis host
-  * [ ] redis port
-  * [ ] redis pass
-  * [ ] mongo URI
+* [X] ~~*Externalize stuff*~~
+  * [X] ~~*redis host*~~
+  * [X] ~~*redis port*~~
+  * [X] ~~*redis pass*~~
+  * [X] ~~*mongo URI*~~
 
 
 ## App server (JWT + auth checking)

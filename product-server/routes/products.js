@@ -1,6 +1,5 @@
 const router = module.exports = new require('express').Router();
-const loggedIn = require('../middleware/loggedIn');
-const passport = require('../passportLocal');
+const loggedIn = require('../lib/middleware/loggedIn');
 
 // routes
 router.get('/', function sendLoginForm(req, res){
