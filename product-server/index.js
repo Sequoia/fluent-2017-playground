@@ -3,7 +3,7 @@ const port = process.env.PORT || 8090;
 
 // ^^ CONFIG ^^ //
 const express = require('express');
-const passportCheck = require('./lib/passportLocal').check;
+const passportCheck = require('./lib/passportCheck');
 
 const app = express();
 const productsRouter = require('./routes/products');
