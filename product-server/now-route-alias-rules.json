@@ -1,0 +1,11 @@
+{
+  "rules": [
+    {
+      "pathname": "/auth**",
+      "dest": "auth2.now.sh"
+    },
+    {
+      "dest": "product-server-wcwhnlkorx.now.sh"
+    }
+  ]
+}
