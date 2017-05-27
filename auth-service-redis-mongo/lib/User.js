@@ -1,4 +1,4 @@
-// get an instance of mongoose and mongoose.Schema
+//requiring this file will cause mongodb to connect
 require('./mongo_connect');
 const bcrypt = require('bcrypt');
 // In a secure setup we'd require a salt here too and pass it to bcrypt :)
@@ -28,6 +28,3 @@ const User = mongoose.model(
 
 // set up a mongoose model and pass it using module.exports
 module.exports = User;
-
-// TODO: set up cart for this user?
-// --> Let's do that in the web app, not in the auth app

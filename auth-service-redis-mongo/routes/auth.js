@@ -1,6 +1,10 @@
 const router = module.exports = new require('express').Router();
-const loggedIn = require('../middleware/loggedIn');
-const passport = require('../passportLocal');
+const loggedIn = require('../lib/middleware/loggedIn');
+const loginRoute = require('../lib/passportLogin');
+
+//for user checking/cookie writing
+const bodyParser = require('body-parser');
+router.use(bodyParser.urlencoded({extended:false}));
 
 // routes
 router.get('/', function sendLoginForm(req, res){
@@ -18,13 +22,10 @@ router.get('/add_one', function addOne(req, res){
   });
 })
 
-router.post('/login', passport.authenticate('local', {
-  successRedirect: '/auth/account',
-  failureRedirect: '/login.html'
-}));
+router.post('/login', loginRoute);
 
 router.get('/logout', (req, res) => {
-  req.logout(); // exposed by passport, destroys login session
+  req.logout(); // exposed by passport, destroys LOGIN session (not whole session)
   req.session.destroy();
   res.redirect('/');
 });
