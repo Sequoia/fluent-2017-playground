@@ -1,0 +1,15 @@
+apiVersion: “v1”
+kind: Pod
+metadata:
+  name: simple-micro-pod
+  labels: 		# arbitrary key/value pairs (metadata)
+    name: simple-micro-pod
+    app: my-first-kube-micro
+spec: 		# defines containers etc.
+  containers: 
+    - name: micro-web
+      image: 34ks/docker-micro	# pull from docker registry
+      ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
