@@ -72,6 +72,7 @@ functions:
       - http:
           path: /
           method: get
+
   getBook:
     handler: book.download
     iamRoleStatements:
@@ -85,7 +86,8 @@ functions:
           method: get
     environment:
       BUCKET: ${self:custom.bucket}
-      FOO_BAR: ${self:custom.kmsSecrets.secrets.FOO_BAR}
+      JWT_SECRET_ENCRYPTED: ${self:custom.kmsSecrets.secrets.JWT_SECRET}
+
   keyTest:
     handler: keytest.handler
     iamRoleStatements:
