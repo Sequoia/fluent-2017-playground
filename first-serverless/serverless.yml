@@ -19,6 +19,12 @@ service: first-serverless
 
 custom:
   bucket: books-bucket-1
+  kmsSecrets: ${file(kms-secrets.${opt:stage, self:provider.stage}.${opt:region, self:provider.region}.yml)}
+  # kmsVariables: 
+  #   key_arn: "arn:aws:kms:us-east-1:700002748008:key/33f4344e-d6b3-4a81-8bf2-08f3f8f98be5"
+
+plugins:
+  - serverless-kms-secrets
 
 provider:
   name: aws
@@ -68,12 +74,31 @@ functions:
           method: get
   getBook:
     handler: book.download
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+        - KMS:Decrypt
+        Resource: ${self:custom.kmsSecrets.keyArn}
     events:
       - http:
           path: /download
           method: get
     environment:
       BUCKET: ${self:custom.bucket}
+      FOO_BAR: ${self:custom.kmsSecrets.secrets.FOO_BAR}
+  keyTest:
+    handler: keytest.handler
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+        - KMS:Decrypt
+        Resource: ${self:custom.kmsSecrets.keyArn}
+    events:
+      - http:
+          path: /keytest
+          method: get
+    environment:
+      FOO_BAR: ${self:custom.kmsSecrets.secrets.FOO_BAR}
 
 
 #    The following are a few example events you can configure
