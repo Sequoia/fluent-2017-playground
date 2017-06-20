@@ -1,0 +1,3 @@
+1. Run `index.js`
+2. Copy the output
+3. Pass it to `decode.js` as an argument
